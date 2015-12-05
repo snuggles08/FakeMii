@@ -7,9 +7,6 @@ http.createServer(function (client_req, response) {
   console.log('serving: ' + client_req.url);
   if(client_req.url == "http://conntest.nintendowifi.net/")
 	sendConnTestPage(response);
-  else if(client_req.url.indexOf("launcher"))
-  {
-	  sendLauncherPage(response);
   }
   else
   {
@@ -17,18 +14,6 @@ http.createServer(function (client_req, response) {
   }
 }).listen(3000);
 console.log('Server running on port 3000');
-
-
-function sendLauncherPage(response){
-  response.writeHead(200, {
-  'Content-Type'	: 'text/html',
-  'connection'		: 'keep-alive'});
-  fs.readFile('./launcher.html',function(err,data){
-    response.end(data);
-  });
-  console.log('served launcher.html');
-}
-
 
 function sendConnTestPage(response){
   response.writeHead(200, {
